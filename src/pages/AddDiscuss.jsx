@@ -1,15 +1,15 @@
 import React from "react";
 import { Navigation } from "../components/navigation/Navigation";
-import { AddDiscussForm } from "../components/AddDiscussForm";
+import { AddQuestionForm } from "../components/AddQuestionForm";
 
-const AddDiscuss = () => {
+const AddQuestion = () => {
   return (
     <div>
       <Navigation />
-      <h1>Discuss</h1>
-      <AddDiscussForm />
+      <h1>Add a question</h1>
+      <AddQuestionForm />
     </div>
   );
 };
 
-export default AddDiscuss;
+export default AddQuestion;

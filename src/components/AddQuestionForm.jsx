@@ -1,16 +1,17 @@
-import { doc, increment, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import { db } from "../db/Firebase";
-// import { v4 as uuid } from "uuid";
+import { v4 as uuid } from "uuid";
 
-export const AddDiscussForm = () => {
+export const AddQuestionForm = () => {
   const [value, setValue] = useState("");
-  let index = 0
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     addQuestion(value);
+
+    setValue("");
   };
 
   const addQuestion = (question) => {
