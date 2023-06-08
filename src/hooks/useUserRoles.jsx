@@ -5,7 +5,7 @@ import { getAuth } from "firebase/auth";
 
 const useUserRoles = () => {
   const [roles, setRoles] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); // Nouvelle variable d'état
+  const [isLoading, setIsLoading] = useState(true);
 
   const auth = getAuth();
   const user = auth.currentUser;
@@ -15,18 +15,19 @@ const useUserRoles = () => {
     const docSnap = await getDoc(docRef);
 
     setRoles(docSnap.get("role"));
-    setIsLoading(false); // Définir isLoading sur false une fois les rôles récupérés
+    setIsLoading(false);
   };
 
   useEffect(() => {
-    fetchUserRoles();
+    if (user) {
+      fetchUserRoles();
+    }
   }, []);
 
   if (isLoading) {
-    // Si les rôles sont en cours de récupération, vous pouvez retourner un indicateur de chargement ou une valeur par défaut
     return "Loading..."; // Exemple avec un indicateur de chargement
   }
-  
+
   return roles;
 };
 

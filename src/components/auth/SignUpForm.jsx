@@ -18,6 +18,8 @@ const SignUpForm = () => {
       })
       .then(userCredential => {
         console.log(userCredential);
+        setEmail("")
+        setPassowrd("")
       })
       .catch(error => {
         console.log(error);
