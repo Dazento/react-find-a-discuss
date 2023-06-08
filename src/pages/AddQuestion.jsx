@@ -7,7 +7,9 @@ const AddQuestion = () => {
     <div>
       <Navigation />
       <h1>Add a question</h1>
-      <AddQuestionForm />
+      <div className="background">
+        <AddQuestionForm />
+      </div>
     </div>
   );
 };

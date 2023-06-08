@@ -33,12 +33,14 @@ export const RandomQuestion = () => {
 
   useEffect(() => {
     getRandomQuestion();
-  }, [questions])
+  }, [questions]);
 
   return (
     <div>
       {randomQuestion && <h2>{randomQuestion.question}</h2>}
-      <button onClick={getRandomQuestion}>Random Question</button>
+      <button onClick={getRandomQuestion} className="btn">
+        Random Question
+      </button>
     </div>
   );
 };

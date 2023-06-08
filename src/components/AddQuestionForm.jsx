@@ -32,7 +32,7 @@ export const AddQuestionForm = () => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <button type="submit">Add</button>
+      <button type="submit" className="btn">Add</button>
     </form>
   );
 };

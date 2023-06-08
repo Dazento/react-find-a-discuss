@@ -1,19 +1,24 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import AddDiscuss from "./pages/AddDiscuss";
-import AuthDetails from "./components/auth/AuthDetails";
 import Auth from "./pages/auth/Auth";
-import AdminElement from "./components/navigation/navElements/AdminElement";
+import AddQuestion from "./pages/AddQuestion";
+import RolesAuthRoute from "./components/navigation/navElements/RolesAuthRoute";
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/add-discuss" element={<AddDiscuss />} />
+        <Route
+          path="/add-question"
+          element={
+            <RolesAuthRoute roles={["admin"]}>
+              <AddQuestion />
+            </RolesAuthRoute>
+          }
+        />
         <Route path="/login" element={<Auth />} />
       </Routes>
-      <AuthDetails />
     </div>
   );
 }

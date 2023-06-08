@@ -6,8 +6,10 @@ const Home = () => {
   return (
     <div>
       <Navigation />
-      <h1>Home</h1>
-      <RandomQuestion />
+        <h1>Home</h1>
+      <div className="background">
+        <RandomQuestion />
+      </div>
     </div>
   );
 };
