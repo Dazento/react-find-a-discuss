@@ -1,33 +1,44 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../db/Firebase";
 
 export const RandomQuestion = () => {
   const [randomQuestion, setRandomQuestion] = useState(null);
+  const [questions, setQuestions] = useState(null);
 
-  const getRandomQuestion = async () => {
+  const fetchQuestions = async () => {
     const questionRef = collection(db, "questions");
     const questionSnapshot = await getDocs(questionRef);
-    const questionList = questionSnapshot.docs.map((doc) => ({
+    const questions = questionSnapshot.docs.map((doc) => ({
       id: doc.id,
-      ...doc.data()
+      ...doc.data(),
     }));
 
-    if (questionList.length > 0) {
-      const randomIndex = Math.floor(Math.random() * questionList.length);
-      const randomQuestion = questionList[randomIndex];
-      setRandomQuestion(randomQuestion);
+    setQuestions(questions);
+  };
+
+  const getRandomQuestion = () => {
+    if (questions) {
+      if (questions.length > 0) {
+        const randomIndex = Math.floor(Math.random() * questions.length);
+        const randomQuestion = questions[randomIndex];
+        setRandomQuestion(randomQuestion);
+      }
     }
-  }
+  };
+
+  useEffect(() => {
+    fetchQuestions();
+  }, []);
 
   useEffect(() => {
     getRandomQuestion();
-  }, []);
+  }, [questions])
 
   return (
     <div>
       {randomQuestion && <h2>{randomQuestion.question}</h2>}
       <button onClick={getRandomQuestion}>Random Question</button>
     </div>
-  )
-}
+  );
+};
