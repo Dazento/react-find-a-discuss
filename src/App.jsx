@@ -1,10 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Auth from "./pages/auth/Auth";
-import AddQuestion from "./pages/AddQuestion";
 import RolesAuthRoute from "./components/navigation/navElements/RolesAuthRoute";
+import AddQuestion from "./pages/admin/AddQuestion";
+import Dashboard from "./pages/admin/Dashboard";
 
 function App() {
+  
   return (
     <div className="App">
       <Routes>
@@ -18,6 +19,14 @@ function App() {
           }
         />
         <Route path="/login" element={<Auth />} />
+        <Route
+          path="/dashboard"
+          element={
+            <RolesAuthRoute roles={["admin"]}>
+              <Dashboard />
+            </RolesAuthRoute>
+          }
+        />
       </Routes>
     </div>
   );
