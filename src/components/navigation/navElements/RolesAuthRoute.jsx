@@ -10,10 +10,9 @@ const RolesAuthRoute = ({ children, role }) => {
     return <Loader />;
   } else if (canAccess) {
     return <Fragment>{children}</Fragment>;
-  } 
-  // else if (canAccess === false) {
-  //   return <Navigate to={"/login"} />;
-  // }
-  };
+  } else if (canAccess === false) {
+    return <Navigate to={"/login"} />;
+  }
+};
 
 export default RolesAuthRoute;

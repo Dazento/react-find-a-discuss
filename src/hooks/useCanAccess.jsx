@@ -3,7 +3,7 @@ import useUserRoles from "./useUserRoles";
 import Loader from "../components/Loader";
 
 const useCanAccess = (role) => {
-  const [canAccess, setCanAccess] = useState(false);
+  const [canAccess, setCanAccess] = useState(null);
   const userRoles = useUserRoles();
 
   useEffect(() => {

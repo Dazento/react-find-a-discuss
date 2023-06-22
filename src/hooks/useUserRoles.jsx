@@ -21,7 +21,7 @@ const useUserRoles = () => {
   useEffect(() => {
     fetchUserRoles();
   }, [user]);
-  
+
   if (isLoading) return <Loader />;
 
   return roles;
