@@ -3,8 +3,8 @@ import Home from "./pages/Home";
 import Auth from "./pages/auth/Auth";
 import AddQuestion from "./pages/AddQuestion";
 import RolesAuthRoute from "./components/navigation/navElements/RolesAuthRoute";
-
 function App() {
+
   return (
     <div className="App">
       <Routes>
@@ -12,7 +12,7 @@ function App() {
         <Route
           path="/add-question"
           element={
-            <RolesAuthRoute roles={["admin"]}>
+            <RolesAuthRoute role={["admin"]}>
               <AddQuestion />
             </RolesAuthRoute>
           }

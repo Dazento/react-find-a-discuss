@@ -1,32 +1,28 @@
-import { doc, getDoc } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../db/Firebase";
-import { getAuth } from "firebase/auth";
+import Loader from "../components/Loader";
+import useUser from "./useUser";
 
 const useUserRoles = () => {
-  const [roles, setRoles] = useState([]);
+  const [roles, setRoles] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const { user } = useUser();
 
-  const auth = getAuth();
-  const user = auth.currentUser;
-
-  const fetchUserRoles = async () => {
-    const docRef = doc(db, "users", `${user.uid}`);
-    const docSnap = await getDoc(docRef);
-
-    setRoles(docSnap.get("role"));
-    setIsLoading(false);
+  const fetchUserRoles = () => {
+    if (user) {
+      onSnapshot(doc(db, "users", `${user.uid}`), (doc) => {
+        setRoles(doc.data().role);
+        setIsLoading(false);
+      });
+    }
   };
 
   useEffect(() => {
-    if (user) {
-      fetchUserRoles();
-    }
-  }, []);
-
-  if (isLoading) {
-    return "Loading..."; // Exemple avec un indicateur de chargement
-  }
+    fetchUserRoles();
+  }, [user]);
+  
+  if (isLoading) return <Loader />;
 
   return roles;
 };

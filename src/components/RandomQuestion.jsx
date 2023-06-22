@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../db/Firebase";
+import Loader from "./Loader";
 
 export const RandomQuestion = () => {
   const [randomQuestion, setRandomQuestion] = useState(null);
@@ -37,7 +38,7 @@ export const RandomQuestion = () => {
 
   return (
     <div>
-      {randomQuestion && <h2>{randomQuestion.question}</h2>}
+      {randomQuestion ? <h2>{randomQuestion.question}</h2> : <Loader />}
       <button onClick={getRandomQuestion} className="btn">
         Random Question
       </button>

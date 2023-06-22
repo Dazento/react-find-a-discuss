@@ -1,31 +1,19 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import { Navigate } from "react-router-dom";
-import useUserRoles from "../../../hooks/useUserRoles";
+import useCanAccess from "../../../hooks/useCanAccess";
+import Loader from "../../Loader";
 
-const RolesAuthRoute = ({ children, roles }) => {
-  const [canAccess, setCanAccess] = useState(false);
+const RolesAuthRoute = ({ children, role }) => {
+  const canAccess = useCanAccess(role);
 
-  const userRoles = useUserRoles();
-
-  const compareRoles = () => {
-    if (userRoles !== "Loading...") {
-      setCanAccess(userRoles.some((userRole) => roles.includes(userRole)));
-    }
-  };
-
-  useEffect(() => {
-    compareRoles();
-  }, [userRoles]);
-
-  if (canAccess) {
+  if (canAccess === null) {
+    return <Loader />;
+  } else if (canAccess) {
     return <Fragment>{children}</Fragment>;
-  }
-  // else if (userRoles !== "Loading..." && !canAccess) {
-  //   console.log(userRoles);
-  //   console.log(canAccess);
-
+  } 
+  // else if (canAccess === false) {
   //   return <Navigate to={"/login"} />;
   // }
-};
+  };
 
 export default RolesAuthRoute;
