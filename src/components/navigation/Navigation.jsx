@@ -11,6 +11,9 @@ export const Navigation = () => {
         <NavLink to="/add-question">
           <li>Add a question</li>
         </NavLink>
+        <NavLink to="/dashboard">
+          <li>Dashboard</li>
+        </NavLink>
         <NavLink to="/login">
           <li>Sign In / Sign Up</li>
         </NavLink>
