@@ -1,21 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../db/Firebase";
 import Loader from "./Loader";
+import QuestionService from "../services/QuestionService";
 
 export const RandomQuestion = () => {
   const [randomQuestion, setRandomQuestion] = useState(null);
   const [questions, setQuestions] = useState(null);
 
-  const fetchQuestions = async () => {
-    const questionRef = collection(db, "questions");
-    const questionSnapshot = await getDocs(questionRef);
-    const questions = questionSnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-
-    setQuestions(questions);
+  const getQuestions = async () => {
+    const data = await QuestionService.getAll();
+    setQuestions(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
 
   const getRandomQuestion = () => {
@@ -29,7 +22,7 @@ export const RandomQuestion = () => {
   };
 
   useEffect(() => {
-    fetchQuestions();
+    getQuestions();
   }, []);
 
   useEffect(() => {

@@ -16,7 +16,7 @@ class QuestionService {
     return getDocs(questions);
   };
 
-  create = (data) => {
+  add = (data) => {
     return addDoc(questions, data);
   };
 
@@ -31,4 +31,4 @@ class QuestionService {
   };
 }
 
-export default new QuestionService;
+export default new QuestionService();

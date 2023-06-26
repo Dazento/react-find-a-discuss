@@ -1,22 +1,121 @@
-.navigation {
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
   ul {
+    overflow: hidden;
+    position: absolute;
     display: flex;
-    margin: 30px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 0;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    background-color: #1a1a40;
+    transition: all 0.5s ease-in-out;
+    transform: translateX(100%);
+    box-shadow: -5px 1px 15px 1px rgba(26,26,64,0.5);
 
     a {
+      color: white;
       text-decoration: none;
-      padding: 10px;
+    }
+    a li {
+      display: block;
+      padding: 0.8rem 1rem;
+      white-space: nowrap;
+      border-radius: 8px;
+      cursor: none;
 
-      li {
-        color: white;
-        transition: 0.2s;
-        cursor: pointer;
-        list-style: none;
-
-        &:hover {
-          color: #d1bfff;
-        }
+      &:hover {
+        background-color: #8758ff;
       }
+    }
+
+    li:last-child {
+      white-space: nowrap;
+    }
+  }
+}
+
+.navbar--active ul {
+  width: 75vw;
+  transform: translateX(0);
+}
+
+.burger-btn {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+
+  &_bar {
+    display: block;
+    width: 45px;
+    height: 3px;
+    background-color: white;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .navbar--active &_bar {
+    width: 0;
+  }
+
+  &_bar::before,
+  &_bar::after {
+    content: "";
+    display: block;
+    width: 45px;
+    height: 3px;
+    position: absolute;
+    background-color: white;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &_bar::before {
+    transform: translateY(-12px);
+  }
+
+  &_bar::after {
+    transform: translateY(12px);
+  }
+
+  .navbar--active &_bar::before {
+    transform: rotate(45deg);
+  }
+
+  .navbar--active &_bar::after {
+    transform: rotate(-45deg);
+  }
+}
+
+@media screen and (min-width: 767.98px) {
+  .navbar {
+    padding: 0 3rem;
+
+    ul {
+      flex-direction: row;
+      position: initial;
+      width: 100%;
+      background: none;
+      height: auto;
+      transform: none;
+      box-shadow: none;
+
+      a {
+        margin-right: 1rem;
+      }
+    }
+
+    .burger-btn {
+      display: none;
     }
   }
 }

@@ -1,7 +1,5 @@
-import { doc, setDoc } from "firebase/firestore";
 import React, { useState } from "react";
-import { db } from "../db/Firebase";
-import { v4 as uuid } from "uuid";
+import QuestionService from "../services/QuestionService";
 
 export const AddQuestionForm = () => {
   const [value, setValue] = useState("");
@@ -15,9 +13,7 @@ export const AddQuestionForm = () => {
   };
 
   const addQuestion = (question) => {
-    const docRef = doc(db, "questions", `${uuid()}`);
-
-    setDoc(docRef, {
+    QuestionService.add({
       question: question,
       active: true,
     });
@@ -32,7 +28,9 @@ export const AddQuestionForm = () => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <button type="submit" className="btn">Add</button>
+      <button type="submit" className="btn">
+        Add
+      </button>
     </form>
   );
 };
