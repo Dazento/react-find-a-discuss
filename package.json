@@ -1,5 +1,6 @@
 {
   "name": "trouve-un-debat",
+  "homepage": "https://trouveundebat.dylanbury.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
