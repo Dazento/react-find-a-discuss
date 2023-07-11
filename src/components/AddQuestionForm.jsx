@@ -28,7 +28,7 @@ export const AddQuestionForm = () => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <button type="submit" className="btn">
+      <button type="submit" className="btn" disabled={value ? true : false}>
         Add
       </button>
     </form>

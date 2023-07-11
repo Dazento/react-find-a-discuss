@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div>
       <Navigation />
-        <h1>Home</h1>
+      <h1>Trouve un débat</h1>
       <div className="background">
         <RandomQuestion />
       </div>

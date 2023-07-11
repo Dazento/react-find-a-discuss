@@ -6,7 +6,7 @@ const AddQuestion = () => {
   return (
     <div>
       <Navigation />
-      <h1>Add a question</h1>
+      <h1>Ajouter une question</h1>
       <div className="background">
         <AddQuestionForm />
       </div>

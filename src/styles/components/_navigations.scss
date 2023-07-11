@@ -17,7 +17,7 @@
     background-color: #1a1a40;
     transition: all 0.5s ease-in-out;
     transform: translateX(100%);
-    box-shadow: -5px 1px 15px 1px rgba(26,26,64,0.5);
+    box-shadow: -5px 1px 15px 1px rgba(26, 26, 64, 0.5);
 
     a {
       color: white;
@@ -28,7 +28,7 @@
       padding: 0.8rem 1rem;
       white-space: nowrap;
       border-radius: 8px;
-      cursor: none;
+      cursor: pointer;
 
       &:hover {
         background-color: #8758ff;

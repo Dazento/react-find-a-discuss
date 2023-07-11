@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import useUserRoles from "../../hooks/useUserRoles";
 
 export const Navigation = () => {
   const [navbarActive, setNavbarActive] = useState(false);
+  const userRoles = useUserRoles();
 
   const toggleMenu = () => {
     setNavbarActive(!navbarActive);
   };
-
-  console.log(navbarActive);
 
   return (
     <header className="container">
@@ -17,12 +17,19 @@ export const Navigation = () => {
           <NavLink to="/">
             <li>Home</li>
           </NavLink>
-          <NavLink to="/add-question">
-            <li>Add a question</li>
-          </NavLink>
-          <NavLink to="/dashboard">
-            <li>Dashboard</li>
-          </NavLink>
+          {userRoles[1] == ["admin"] ? (
+            <>
+              <NavLink to="/add-question">
+                <li>Add a question</li>
+              </NavLink>
+              <NavLink to="/dashboard">
+                <li>Dashboard</li>
+              </NavLink>
+            </>
+          ) : (
+            ""
+          )}
+
           <NavLink to="/login">
             <li>Sign In / Sign Up</li>
           </NavLink>

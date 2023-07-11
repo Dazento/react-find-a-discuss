@@ -47,33 +47,28 @@ const GetQuestions = () => {
         ) : (
           questions.map((doc, index) => (
             <tr key={index}>
-              <th data-title="Id">{index}</th>
-              <th data-title="Question">{doc.question}</th>
-              <th data-title="Actions">
-                <button className="action-btn" onClick={() => handleUpdate(doc.id)}><HiOutlinePencil /></button>
-                <button className="action-btn" onClick={() => handleDelete(doc.id)}><HiOutlineTrash /></button>
-              </th>
+              <td data-title="Id">{index}</td>
+              <td data-title="Question">{doc.question}</td>
+              <td data-title="Actions">
+                <button
+                  className="action-btn"
+                  onClick={() => handleUpdate(doc.id)}
+                >
+                  <HiOutlinePencil />
+                </button>
+                <button
+                  className="action-btn"
+                  onClick={() => handleDelete(doc.id)}
+                >
+                  <HiOutlineTrash />
+                </button>
+              </td>
             </tr>
           ))
         )}
       </tbody>
     </table>
   );
-
-  // return (
-  //   <div>
-  //     {questions ? (
-  //       questions.map((doc, index) => (
-  //         <div>
-  //           <p>{doc.question}</p>
-  //           <a onClick={() => handleDelete(doc.id)}>delete</a>
-  //         </div>
-  //       ))
-  //     ) : (
-  //       <Loader />
-  //     )}
-  //   </div>
-  // );
 };
 
 export default GetQuestions;
