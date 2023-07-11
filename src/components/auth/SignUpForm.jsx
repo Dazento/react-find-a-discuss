@@ -16,8 +16,7 @@ const SignUpForm = () => {
           role: ['user']
         });
       })
-      .then(userCredential => {
-        console.log(userCredential);
+      .then(() => {
         setEmail("")
         setPassowrd("")
       })

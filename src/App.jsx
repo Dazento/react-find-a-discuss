@@ -22,7 +22,7 @@ function App() {
         <Route
           path="/dashboard"
           element={
-            <RolesAuthRoute role={["admin"]}>
+            <RolesAuthRoute role={["super-admin"]}>
               <Dashboard />
             </RolesAuthRoute>
           }

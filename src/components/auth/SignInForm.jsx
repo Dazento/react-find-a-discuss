@@ -10,8 +10,7 @@ const SignInForm = () => {
     e.preventDefault();
 
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log(userCredential);
+      .then(() => {
         setEmail("")
         setPassowrd("")
       })

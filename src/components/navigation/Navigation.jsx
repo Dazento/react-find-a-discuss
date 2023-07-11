@@ -22,14 +22,15 @@ export const Navigation = () => {
               <NavLink to="/add-question">
                 <li>Add a question</li>
               </NavLink>
+            </>
+          ) : null}
+          {userRoles[2] == ["super-admin"] ? (
+            <>
               <NavLink to="/dashboard">
                 <li>Dashboard</li>
               </NavLink>
             </>
-          ) : (
-            ""
-          )}
-
+          ) : null}
           <NavLink to="/login">
             <li>Sign In / Sign Up</li>
           </NavLink>
