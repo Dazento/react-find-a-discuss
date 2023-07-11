@@ -8,15 +8,24 @@ export const AddQuestionForm = () => {
     e.preventDefault();
 
     addQuestion(value);
+    console.log(value);
 
     setValue("");
   };
 
   const addQuestion = (question) => {
+    console.log(question);
     QuestionService.add({
       question: question,
       active: true,
     });
+
+    // const docRef = doc(db, "questions", `${uuid()}`);
+
+    // setDoc(docRef, {
+    //   question: question,
+    //   active: true,
+    // });
   };
 
   return (
@@ -28,7 +37,7 @@ export const AddQuestionForm = () => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <button type="submit" className="btn" disabled={value ? true : false}>
+      <button type="submit" className="btn" disabled={value ? false : true}>
         Add
       </button>
     </form>

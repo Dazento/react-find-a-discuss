@@ -16,6 +16,7 @@ class QuestionService {
   };
 
   add = (data) => {
+    console.log(data);
     return addDoc(questions, data);
   };
 
